@@ -8,8 +8,8 @@ var pos_ok = 1
 
 func _process(delta):
 	if pos == 1:
-		self.rect_position.x = GPerimen.mous_pos_x
-		self.rect_position.y = GPerimen.mous_pos_y
+		self.rect_position.x = GPerimen.mous_pos_x - 12
+		self.rect_position.y = GPerimen.mous_pos_y - 12
 
 func _on_Button_pressed():
 	if pos == 0:
