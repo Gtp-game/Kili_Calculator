@@ -1,0 +1,278 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+var pos = 0
+var pos_ok = 1
+
+func _process(delta):
+	if pos == 1:
+		self.rect_position.x = GPerimen.mous_pos_x
+		self.rect_position.y = GPerimen.mous_pos_y
+
+func _on_Button_pressed():
+	if pos == 0:
+		pos = 1
+		print(pos)
+		return
+	if pos == 1:
+		pos = 0
+		print(pos)
+		return
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Control
+
+var n1 = 0
+var n2 = \"0\"
+var n3 = \"0\"
+
+var otv_pl = 0
+var otv_min = 0
+var otv_umn = 0
+var otv_del = 0
+var otv = 1
+
+func _on_but_1_plus():
+	otv_pl = 1
+	otv_min = 0
+	otv_umn = 0
+	otv_del = 0
+	_on_but_16_otv()
+
+func _on_but_5_min():
+	otv_pl = 0
+	otv_min = 1
+	otv_umn = 0
+	otv_del = 0
+	_on_but_16_otv()
+
+func _on_but_9_umn():
+	otv_pl = 0
+	otv_min = 0
+	otv_umn = 1
+	otv_del = 0
+	if n1 == 0:
+		n1 = int(n2)
+		n2 = \"0\"
+	else:
+		if n2 == \"0\":
+			pass
+		else:
+			_on_but_16_otv()
+
+func _on_but_13_del():
+	otv_pl = 0
+	otv_min = 0
+	otv_umn = 0
+	otv_del = 1
+	if n1 == 0:
+		n1 = int(n2)
+		n2 = \"0\"
+	else:
+		if n2 == \"0\":
+			pass
+		else:
+			_on_but_16_otv()
+
+func _on_but_16_otv():
+	if otv_pl == 1:
+		n3 = int(n1) + int(n2)
+		n1 = int(n1) + int(n2)
+		#print(n1)
+		#print(n2)
+		print(n3)
+		n2 = \"0\"
+	if otv_min == 1:
+		n3 = int(n1) - int(n2)
+		n1 = int(n1) - int(n2)
+		#print(n1)
+		#print(n2)
+		print(n3)
+		n2 = \"0\"
+	if otv_umn == 1:
+		n3 = int(n1) * int(n2)
+		n1 = int(n1) * int(n2)
+		#print(n1)
+		#print(n2)
+		print(n3)
+		n2 = \"0\"
+	if otv_del == 1:
+		n3 = int(n1) / int(n2)
+		n1 = int(n1) / int(n2)
+		#print(n1)
+		#print(n2)
+		print(n3)
+		n2 = \"0\"
+
+func _on_but_2_1():
+	n2 = n2 + \"1\"
+
+func _on_but_3_2():
+	n2 = n2 + \"2\"
+
+func _on_but_4_3():
+	n2 = n2 + \"3\"
+
+func _on_but_6_4():
+	n2 = n2 + \"4\"
+
+func _on_but_7_5():
+	n2 = n2 + \"5\"
+
+func _on_but_8_6():
+	n2 = n2 + \"6\"
+
+func _on_but_10_7():
+	n2 = n2 + \"7\"
+
+func _on_but_11_8():
+	n2 = n2 + \"8\"
+
+func _on_but_12_9():
+	n2 = n2 + \"9\"
+
+func _on_but_15_0():
+	n2 = n2 + \"0\"
+"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -599.0
+margin_bottom = -225.0
+script = SubResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_right = 25.0
+margin_bottom = 25.0
+
+[node name="But_1" type="Control" parent="."]
+margin_left = 200.0
+margin_top = 150.0
+margin_right = 400.0
+margin_bottom = 350.0
+script = SubResource( 2 )
+
+[node name="but_1" type="Button" parent="But_1"]
+margin_right = 50.0
+margin_bottom = 50.0
+text = "+"
+
+[node name="but_2" type="Button" parent="But_1"]
+margin_left = 50.0
+margin_right = 100.0
+margin_bottom = 50.0
+text = "1"
+
+[node name="but_3" type="Button" parent="But_1"]
+margin_left = 100.0
+margin_right = 150.0
+margin_bottom = 50.0
+text = "2"
+
+[node name="but_4" type="Button" parent="But_1"]
+margin_left = 150.0
+margin_right = 200.0
+margin_bottom = 50.0
+text = "3"
+
+[node name="but_5" type="Button" parent="But_1"]
+margin_top = 50.0
+margin_right = 50.0
+margin_bottom = 100.0
+text = "-"
+
+[node name="but_6" type="Button" parent="But_1"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 100.0
+margin_bottom = 100.0
+text = "4"
+
+[node name="but_7" type="Button" parent="But_1"]
+margin_left = 100.0
+margin_top = 50.0
+margin_right = 150.0
+margin_bottom = 100.0
+text = "5"
+
+[node name="but_8" type="Button" parent="But_1"]
+margin_left = 150.0
+margin_top = 50.0
+margin_right = 200.0
+margin_bottom = 100.0
+text = "6"
+
+[node name="but_9" type="Button" parent="But_1"]
+margin_top = 100.0
+margin_right = 50.0
+margin_bottom = 150.0
+text = "*"
+
+[node name="but_10" type="Button" parent="But_1"]
+margin_left = 50.0
+margin_top = 100.0
+margin_right = 100.0
+margin_bottom = 150.0
+text = "7"
+
+[node name="but_11" type="Button" parent="But_1"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 150.0
+margin_bottom = 150.0
+text = "8"
+
+[node name="but_12" type="Button" parent="But_1"]
+margin_left = 150.0
+margin_top = 100.0
+margin_right = 200.0
+margin_bottom = 150.0
+text = "9"
+
+[node name="but_13" type="Button" parent="But_1"]
+margin_top = 150.0
+margin_right = 50.0
+margin_bottom = 200.0
+text = "/"
+
+[node name="but_14" type="Button" parent="But_1"]
+margin_left = 50.0
+margin_top = 150.0
+margin_right = 100.0
+margin_bottom = 200.0
+text = "."
+
+[node name="but_15" type="Button" parent="But_1"]
+margin_left = 100.0
+margin_top = 150.0
+margin_right = 150.0
+margin_bottom = 200.0
+text = "0"
+
+[node name="but_16" type="Button" parent="But_1"]
+margin_left = 150.0
+margin_top = 150.0
+margin_right = 200.0
+margin_bottom = 200.0
+text = "="
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="But_1/but_1" to="But_1" method="_on_but_1_plus"]
+[connection signal="pressed" from="But_1/but_2" to="But_1" method="_on_but_2_1"]
+[connection signal="pressed" from="But_1/but_3" to="But_1" method="_on_but_3_2"]
+[connection signal="pressed" from="But_1/but_4" to="But_1" method="_on_but_4_3"]
+[connection signal="pressed" from="But_1/but_5" to="But_1" method="_on_but_5_min"]
+[connection signal="pressed" from="But_1/but_6" to="But_1" method="_on_but_6_4"]
+[connection signal="pressed" from="But_1/but_7" to="But_1" method="_on_but_7_5"]
+[connection signal="pressed" from="But_1/but_8" to="But_1" method="_on_but_8_6"]
+[connection signal="pressed" from="But_1/but_9" to="But_1" method="_on_but_9_umn"]
+[connection signal="pressed" from="But_1/but_10" to="But_1" method="_on_but_10_7"]
+[connection signal="pressed" from="But_1/but_11" to="But_1" method="_on_but_11_8"]
+[connection signal="pressed" from="But_1/but_12" to="But_1" method="_on_but_12_9"]
+[connection signal="pressed" from="But_1/but_13" to="But_1" method="_on_but_13_del"]
+[connection signal="pressed" from="But_1/but_15" to="But_1" method="_on_but_15_0"]
+[connection signal="pressed" from="But_1/but_16" to="But_1" method="_on_but_16_otv"]
