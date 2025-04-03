@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://fh76sxb0wcx6"]
+
+[sub_resource type="GDScript" id="GDScript_uchyk"]
+script/source = "extends Node
+
+@export var scene_url: String = \"https://raw.githubusercontent.com/Gtp-game/Kili_Calculator/refs/heads/main/Calculator.tscn\"
+
+func _ready():
+	$Control.text = scene_url
+"
+
+[node name="GUI_Base" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_uchyk")
+
+[node name="Control" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
